@@ -10,6 +10,7 @@ a low-level fantasy game console for building small games with [WebAssembly](htt
 ## Requirements
 
 - [rust toolchain](https://www.rust-lang.org/tools/install)
+- wasm32-unknown-unknown target: `rustup target add wasm32-unknown-unknown`
 - [wasm4](https://wasm4.org/docs/getting-started/setup)
 
 #### Release build
