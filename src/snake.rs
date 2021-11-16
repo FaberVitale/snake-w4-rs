@@ -1,14 +1,14 @@
-use crate::palette::set_draw_color;
+use crate::{palette::set_draw_color, wasm4};
 
 #[derive(Clone, Copy, PartialEq, Eq)]
-pub(crate) struct Point {
+pub struct Point {
     pub x: i32,
     pub y: i32,
 }
 
-pub(crate) struct Snake {
-    pub(crate) body: Vec<Point>,
-    pub(crate) direction: Point,
+pub struct Snake {
+    pub body: Vec<Point>,
+    pub direction: Point,
 }
 
 impl Snake {
@@ -19,7 +19,7 @@ impl Snake {
                 Point { x: 1, y: 0 },
                 Point { x: 0, y: 0 },
             ],
-            direction: crate::snake::Point { x: 1, y: 0 },
+            direction: Point { x: 1, y: 0 },
         }
     }
 
@@ -27,12 +27,12 @@ impl Snake {
         if let Some(first) = self.body.first() {
             set_draw_color(0x43u16);
 
-            for Point { x, y } in self.body.iter().copied() {
-                crate::wasm4::rect(x * 8, y * 8, 8, 8);
+            for &Point { x, y } in self.body.iter() {
+                wasm4::rect(x * 8, y * 8, 8, 8);
             }
 
             set_draw_color(0x4u16);
-            crate::wasm4::rect(first.x * 8, first.y * 8, 8, 8);
+            wasm4::rect(first.x * 8, first.y * 8, 8, 8);
         }
     }
 
@@ -95,7 +95,7 @@ impl Snake {
                 .body
                 .iter()
                 .skip(1)
-                .find(|Point { x, y }| *x == first.x && *y == first.y)
+                .find(|&body_section| body_section == first)
                 .is_some(),
         }
     }

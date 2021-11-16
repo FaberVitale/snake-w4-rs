@@ -4,7 +4,7 @@ use crate::wasm4;
 use rand::prelude::*;
 use rand_pcg::Pcg64;
 
-pub(crate) struct Game {
+pub struct Game {
     rng: Pcg64,
     frame_count: u32,
     snake: Snake,
@@ -15,9 +15,6 @@ pub(crate) struct Game {
 static FRUIT_SPRITE: [u8; 16] = [
     0x00, 0xa0, 0x02, 0x00, 0x0e, 0xf0, 0x36, 0x5c, 0xd6, 0x57, 0xd5, 0x57, 0x35, 0x5c, 0x0f, 0xf0,
 ];
-
-#[inline]
-fn get_next_fruit_pos() {}
 
 impl Game {
     pub fn new() -> Self {

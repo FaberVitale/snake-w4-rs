@@ -6,10 +6,10 @@ mod snake;
 mod wasm4;
 use game::Game;
 use lazy_static::lazy_static;
-use std::sync::{Arc, Mutex};
+use std::sync::Mutex;
 
 lazy_static! {
-    static ref SNAKE_GAME: Arc<Mutex<Game>> = Arc::new(Mutex::new(Game::new()));
+    static ref SNAKE_GAME: Mutex<Game> = Mutex::new(Game::new());
 }
 
 #[no_mangle]
