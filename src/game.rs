@@ -60,7 +60,11 @@ impl Game {
             let dropped_pos = self.snake.update();
 
             if self.snake.is_dead() {
-                // Do something
+                self.snake = Snake::new();
+                self.fruit = Point {
+                    x: self.rng.gen_range(0..20),
+                    y: self.rng.gen_range(0..20),
+                };
             }
 
             if self.snake.body[0] == self.fruit {
