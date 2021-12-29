@@ -31,7 +31,7 @@ impl Game {
         }
     }
 
-    pub fn process_input(&mut self) {
+    pub fn input(&mut self) {
         let gamepad = unsafe { *wasm4::GAMEPAD1 };
         let just_pressed = gamepad & (gamepad ^ self.prev_gamepad);
 
@@ -54,7 +54,7 @@ impl Game {
     pub fn update(&mut self) {
         self.frame_count = self.frame_count.overflowing_add(1).0;
 
-        self.process_input();
+        self.input();
 
         if self.frame_count % 15 == 0 {
             let dropped_pos = self.snake.update();
