@@ -24,13 +24,13 @@ impl Snake {
     }
 
     pub fn draw(&self) {
-        set_draw_color(0x43u16);
+        set_draw_color(0x43);
 
         for &Point { x, y } in self.body.iter() {
             wasm4::rect(x * 8, y * 8, 8, 8);
         }
 
-        set_draw_color(0x4u16);
+        set_draw_color(0x4);
         wasm4::rect(self.body[0].x * 8, self.body[0].y * 8, 8, 8);
     }
 

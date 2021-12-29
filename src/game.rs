@@ -79,7 +79,7 @@ impl Game {
         }
 
         self.snake.draw();
-        set_draw_color(0x4320u16);
+        set_draw_color(0x432);
 
         wasm4::blit(
             &FRUIT_SPRITE,
