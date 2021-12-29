@@ -54,10 +54,6 @@ impl Snake {
         self.body.pop()
     }
 
-    pub fn grow_tail(&mut self, last_pos: Point) {
-        self.body.push(last_pos);
-    }
-
     pub fn left(&mut self) {
         if self.direction.x == 0 {
             self.direction = Point { x: -1, y: 0 };
