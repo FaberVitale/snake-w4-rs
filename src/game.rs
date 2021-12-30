@@ -52,7 +52,7 @@ impl Game {
     }
 
     pub fn update(&mut self) {
-        self.frame_count = self.frame_count.overflowing_add(1).0;
+        self.frame_count += 1;
 
         self.input();
 
